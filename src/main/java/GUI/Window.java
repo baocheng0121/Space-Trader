@@ -1,18 +1,15 @@
 package GUI;
 
 import java.awt.EventQueue;
-import javax.print.MultiDocPrintService;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import javax.swing.JTextField;
-import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -91,7 +88,7 @@ public class Window extends JFrame {
                     passArgs[0] = type;
                     passArgs[1] = name;
                     passArgs[2] = token;
-                    LogInPage.main(passArgs);
+                    UserPage.main(passArgs);
                     frame.dispose();
                 }
 //                console.getUserInfo("baocheng2", "deb67bdb-2924-4539-991e-5e6540316fb1");

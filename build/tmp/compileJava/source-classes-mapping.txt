@@ -1,20 +1,49 @@
-OnlineAPI/Console.java
- OnlineAPI.Console
 OnlineAPI/OnlineConsole.java
  OnlineAPI.OnlineConsole
 GUI/Window.java
  GUI.Window
  GUI.Window$1
  GUI.Window$2
-GUI/LogInPage.java
- GUI.LogInPage
- GUI.LogInPage$1
- GUI.LogInPage$2
-DummyAPI/DummyFacade.java
- DummyAPI.DummyFacade
+Main.java
+ Main
+GUI/loans/AvailableLoans.java
+ GUI.loans.AvailableLoans
+ GUI.loans.AvailableLoans$1
+ GUI.loans.AvailableLoans$2
+ GUI.loans.AvailableLoans$3
 GUI/EnterToken.java
  GUI.EnterToken
  GUI.EnterToken$1
  GUI.EnterToken$2
-Main.java
- Main
+DummyAPI/DummyFacade.java
+ DummyAPI.DummyFacade
+GUI/ships/Goods.java
+ GUI.ships.Goods
+ GUI.ships.Goods$1
+GUI/loans/MyLoans.java
+ GUI.loans.MyLoans
+ GUI.loans.MyLoans$1
+ GUI.loans.MyLoans$2
+ GUI.loans.MyLoans$3
+ GUI.loans.MyLoans$4
+OnlineAPI/Console.java
+ OnlineAPI.Console
+GUI/UserPage.java
+ GUI.UserPage
+ GUI.UserPage$1
+ GUI.UserPage$2
+ GUI.UserPage$3
+ GUI.UserPage$4
+ GUI.UserPage$5
+GUI/ships/MyShips.java
+ GUI.ships.MyShips
+ GUI.ships.MyShips$1
+ GUI.ships.MyShips$2
+ GUI.ships.MyShips$3
+ GUI.ships.MyShips$4
+GUI/ships/AvailableShips.java
+ GUI.ships.AvailableShips
+ GUI.ships.AvailableShips$1
+ GUI.ships.AvailableShips$2
+ GUI.ships.AvailableShips$3
+ GUI.ships.AvailableShips$4

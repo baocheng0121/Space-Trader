@@ -68,38 +68,16 @@ public class EnterToken extends JFrame {
                     String[] passArgs = new String[2];
                     passArgs[0] = type;
                     passArgs[1] = name;
-                    EnterToken.main(new String[2]);
+                    EnterToken.main(passArgs);
                     frame.dispose();
                 } else {
                     String[] passArgs = new String[3];
                     passArgs[0] = type;
                     passArgs[1] = name;
                     passArgs[2] = token;
-                    LogInPage.main(passArgs);
+                    UserPage.main(passArgs);
                     frame.dispose();
                 }
-//                console.getUserInfo("baocheng2", "deb67bdb-2924-4539-991e-5e6540316fb1");
-//                if(user != null){
-//                    String[] userinfo = new String[2];
-//                    userinfo[0] = token;
-//                    userinfo[1] = password;
-//                    if (user.getType().equalsIgnoreCase("cashier")){
-//                        CashierInterface.main(userinfo);
-//                        frame.dispose();
-//                    } else if (user.getType().equalsIgnoreCase("seller")){
-//
-//                        SellerInterface.main(userinfo);
-//                        frame.dispose();
-//                    } else if (user.getType().equalsIgnoreCase("owner")){
-//                        OwnerInterface.main(userinfo);
-//                    }
-//                    /* go to the next page */
-//                    // AdminSection.main(s);
-//                    frame.dispose();
-//                }else{
-//                    JOptionPane.showMessageDialog(StaffLogIn.this,"No such user!");
-//                    tokenField.setText("");passwordField.setText("");
-//                }
             }
         });
 
