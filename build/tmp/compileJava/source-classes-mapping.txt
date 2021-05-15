@@ -1,8 +1,20 @@
+OnlineAPI/Console.java
+ OnlineAPI.Console
+OnlineAPI/OnlineConsole.java
+ OnlineAPI.OnlineConsole
+GUI/Window.java
+ GUI.Window
+ GUI.Window$1
+ GUI.Window$2
+GUI/LogInPage.java
+ GUI.LogInPage
+ GUI.LogInPage$1
+ GUI.LogInPage$2
 DummyAPI/DummyFacade.java
  DummyAPI.DummyFacade
-Bootstrap.java
- Bootstrap
-Console.java
- Console
-OnlineConsole.java
- OnlineConsole
+GUI/EnterToken.java
+ GUI.EnterToken
+ GUI.EnterToken$1
+ GUI.EnterToken$2
+Main.java
+ Main
