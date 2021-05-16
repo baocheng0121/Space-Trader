@@ -10,16 +10,13 @@ public class Main {
 
     public static void main(String[] args) {
         String[] arg = new String[2];
-        Console console;
         if (args.length > 0){
             if (args[0].equals("offline")){
                 System.out.println("OFFLINE");
                 arg[0] = "offline";
-                console = new DummyFacade();
             } else if (args[0].equals("online")){
                 System.out.println("ONLINE");
                 arg[0] = "online";
-                console = new OnlineConsole();
             } else {
                 System.out.println("Invalid Parameter");
                 return;
