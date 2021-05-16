@@ -47,6 +47,8 @@ public interface Console {
 
     JSONObject getShips(String username, String token);
 
+    JSONObject getShip(String username, String token, String shipID);
+
     JSONObject getGood(String username, String token, String shipId);
 
     /**

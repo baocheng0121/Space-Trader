@@ -75,7 +75,7 @@ public class Window extends JFrame {
                 }
                 JSONObject json = console.claimUserName(name);
                 if (json == null){
-                    JOptionPane.showMessageDialog(Window.this, "Welcome Back, " + name + "! Please enter your token~");
+                    JOptionPane.showMessageDialog(Window.this, "User Exists! Verifying your token.");
                     String[] passArgs = new String[2];
                     passArgs[0] = type;
                     passArgs[1] = name;

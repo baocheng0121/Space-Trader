@@ -368,6 +368,36 @@ public class OnlineConsole implements Console {
     }
 
     @Override
+    public JSONObject getShip(String username, String token, String shipID){
+        String link = String.format("https://api.spacetraders.io/users/%s/ships/%s", username, shipID);
+        try {
+            URL url = new URL(link);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Authorization", "Bearer " + token);
+            connection.setRequestProperty("Accept", "application/json");
+
+            if (connection.getResponseCode() != 200){
+                throw new RuntimeException("Failed : HTTP Error Code : " + connection.getResponseCode());
+            }
+            Reader in = new BufferedReader(new InputStreamReader(connection.getInputStream(), "utf-8"));
+            StringBuilder sb = new StringBuilder();
+            for (int c; (c = in.read()) >= 0;){
+                sb.append((char) c);
+            }
+            String response = sb.toString();
+            System.out.println(response);
+            JSONParser parser = new JSONParser();
+            JSONObject json = (JSONObject) parser.parse(response);
+            connection.disconnect();
+            return json;
+        } catch (Exception e){
+            System.out.println("Exception in NetClientGet: - " + e);
+        }
+        return null;
+    }
+
+    @Override
     public JSONObject getGood(String username, String token, String shipId){
         String link = String.format("https://api.spacetraders.io/users/%s/ships/%s", username, shipId);
         try {

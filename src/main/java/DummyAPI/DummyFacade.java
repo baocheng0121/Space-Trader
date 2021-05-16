@@ -101,6 +101,9 @@ public class DummyFacade implements Console{
     }
 
     @Override
+    public JSONObject getShip(String username, String token, String shipID) { return null; }
+
+    @Override
     public JSONObject getGood(String username, String token, String shipId) {return null;}
 
     /**

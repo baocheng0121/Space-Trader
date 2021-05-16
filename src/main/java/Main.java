@@ -26,7 +26,7 @@ public class Main {
             }
 
             Window.main(arg);
-
+            //console.getShip("baocheng7", "56f0ffdd-8a49-4f60-829e-a0f38ea5ef7e", "ckoolbeer10394141bs6dgzogprj");
             //console.claimUserName("baocheng7");
             //console.getUserInfo("baocheng7", "56f0ffdd-8a49-4f60-829e-a0f38ea5ef7e");
             // console.requestLoan("56f0ffdd-8a49-4f60-829e-a0f38ea5ef7e", "baocheng7", "STARTUP");

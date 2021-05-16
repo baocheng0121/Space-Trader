@@ -3,6 +3,7 @@ package GUI;
 import DummyAPI.DummyFacade;
 import GUI.loans.*;
 import GUI.ships.*;
+import GUI.market.*;
 import OnlineAPI.Console;
 import OnlineAPI.OnlineConsole;
 import org.json.simple.JSONArray;
@@ -21,7 +22,6 @@ public class UserPage extends JFrame {
     private JPanel contentPane;
     private JButton ships;
     private JButton loans;
-    private JButton trade;
     private static Console console;
 
     /** run the process **/
@@ -94,7 +94,6 @@ public class UserPage extends JFrame {
 
         this.ships = new JButton("Ships");
         this.loans = new JButton("Loans");
-        this.trade = new JButton("Trades");
 
         JButton back = new JButton("active");
 
@@ -127,16 +126,6 @@ public class UserPage extends JFrame {
             }
         });
 
-        this.trade.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String[] passArgs = new String[3];
-                passArgs[0] = type;
-                passArgs[1] = name;
-                passArgs[2] = token;
-                MyShips.main(passArgs);
-                frame.dispose();
-            }
-        });
 
         GroupLayout layout = new GroupLayout(contentPane);
         layout.setHorizontalGroup(
@@ -150,11 +139,6 @@ public class UserPage extends JFrame {
                                         .addGap(50)
                                         .addComponent(items, GroupLayout.PREFERRED_SIZE, 450, GroupLayout.PREFERRED_SIZE)
                                         .addGap(100)
-//                                        .addComponent(nameLabel)
-//                                        .addComponent(quantityLabel)
-//                                        .addComponent(quantity, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-//                                        .addComponent(id, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(trade)
                                         .addComponent(ships)
                                         .addGap(60)
                                         .addComponent(loans))
@@ -168,15 +152,8 @@ public class UserPage extends JFrame {
                                 .addGap(50)
                                 .addComponent(items, GroupLayout.PREFERRED_SIZE, 170, GroupLayout.PREFERRED_SIZE)
                                 .addGap(50)
-//                                .addGroup(layout.createSequentialGroup()
-//                                        .addComponent(nameLabel)
-//                                        .addComponent(id, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-//                                .addGroup(layout.createSequentialGroup()
-//                                        .addComponent(quantityLabel)
-//                                        .addComponent(quantity, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup())
-                                        .addComponent(trade)
                                         .addComponent(ships)
                                         .addComponent(loans)
                                 )

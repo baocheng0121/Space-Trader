@@ -4,8 +4,12 @@ GUI/Window.java
  GUI.Window
  GUI.Window$1
  GUI.Window$2
-Main.java
- Main
+GUI/loans/MyLoans.java
+ GUI.loans.MyLoans
+ GUI.loans.MyLoans$1
+ GUI.loans.MyLoans$2
+ GUI.loans.MyLoans$3
+ GUI.loans.MyLoans$4
 GUI/loans/AvailableLoans.java
  GUI.loans.AvailableLoans
  GUI.loans.AvailableLoans$1
@@ -17,33 +21,40 @@ GUI/EnterToken.java
  GUI.EnterToken$2
 DummyAPI/DummyFacade.java
  DummyAPI.DummyFacade
-GUI/ships/Goods.java
- GUI.ships.Goods
- GUI.ships.Goods$1
-GUI/loans/MyLoans.java
- GUI.loans.MyLoans
- GUI.loans.MyLoans$1
- GUI.loans.MyLoans$2
- GUI.loans.MyLoans$3
- GUI.loans.MyLoans$4
 OnlineAPI/Console.java
  OnlineAPI.Console
-GUI/UserPage.java
- GUI.UserPage
- GUI.UserPage$1
- GUI.UserPage$2
- GUI.UserPage$3
- GUI.UserPage$4
- GUI.UserPage$5
-GUI/ships/MyShips.java
- GUI.ships.MyShips
- GUI.ships.MyShips$1
- GUI.ships.MyShips$2
- GUI.ships.MyShips$3
- GUI.ships.MyShips$4
+Main.java
+ Main
 GUI/ships/AvailableShips.java
  GUI.ships.AvailableShips
  GUI.ships.AvailableShips$1
  GUI.ships.AvailableShips$2
  GUI.ships.AvailableShips$3
  GUI.ships.AvailableShips$4
+GUI/UserPage.java
+ GUI.UserPage
+ GUI.UserPage$1
+ GUI.UserPage$2
+ GUI.UserPage$3
+ GUI.UserPage$4
+GUI/ships/MyShips.java
+ GUI.ships.MyShips
+ GUI.ships.MyShips$1
+ GUI.ships.MyShips$2
+ GUI.ships.MyShips$3
+ GUI.ships.MyShips$4
+ GUI.ships.MyShips$5
+GUI/market/TradePage.java
+ GUI.market.TradePage
+ GUI.market.TradePage$1
+ GUI.market.TradePage$2
+ GUI.market.TradePage$3
+ GUI.market.TradePage$4
+ GUI.market.TradePage$5
+GUI/market/NearbyMarket.java
+ GUI.market.NearbyMarket
+ GUI.market.NearbyMarket$1
+ GUI.market.NearbyMarket$2
+ GUI.market.NearbyMarket$3
+ GUI.market.NearbyMarket$4
+ GUI.market.NearbyMarket$5

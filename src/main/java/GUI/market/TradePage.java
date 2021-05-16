@@ -1,9 +1,9 @@
-package GUI.ships;
+package GUI.market;
 
 import DummyAPI.DummyFacade;
 import GUI.UserPage;
 import GUI.Window;
-import GUI.market.TradePage;
+import GUI.ships.MyShips;
 import OnlineAPI.Console;
 import OnlineAPI.OnlineConsole;
 import org.json.simple.JSONArray;
@@ -11,6 +11,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.awt.*;
+import javax.print.DocFlavor;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
@@ -20,12 +21,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Iterator;
 
-public class MyShips extends JFrame {
-    static MyShips frame;
+public class TradePage extends JFrame {
+    static TradePage frame;
     private JPanel contentPane;
     private JButton check;
     private JButton buy;
-    private JButton trade;
+    private JButton sell;
     private static Console console;
 
     /** run the process **/
@@ -33,7 +34,7 @@ public class MyShips extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    frame = new MyShips(args[0], args[1], args[2]);
+                    frame = new TradePage(args[0], args[1], args[2], args[3]);
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -43,7 +44,7 @@ public class MyShips extends JFrame {
     }
 
     /** setting up the interface frame **/
-    public MyShips(String type, String name, String token) {
+    public TradePage(String type, String name, String token, String shipID) {
 
         /* setting the default value */
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -52,7 +53,7 @@ public class MyShips extends JFrame {
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
 
-        JLabel statusLabel = new JLabel("Your Ships");
+        JLabel statusLabel = new JLabel("Market Place");
 
         statusLabel.setFont(new Font(Font.SERIF, Font.PLAIN, 15));
 
@@ -64,64 +65,62 @@ public class MyShips extends JFrame {
             console = null;
         }
         if (console == null){
-            JOptionPane.showMessageDialog(MyShips.this,"INVALID WORKING MODE");
+            JOptionPane.showMessageDialog(TradePage.this,"INVALID WORKING MODE");
             return;
         }
-        JSONObject json = console.getShips(name, token);
-        JSONArray shipArray = null;
-        try{
-            shipArray = (JSONArray) json.get("ships");
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        JSONObject json = console.getShip(name, token, shipID);
+        JSONObject ship = (JSONObject)json.get("ship");
 
-        if (shipArray == null){
-            String[] passArgs = new String[3];
+        if (ship == null){
+            JOptionPane.showMessageDialog(TradePage.this, "INVALID SHIP ID");
+
+            String[] passArgs = new String[4];
             passArgs[0] = type;
             passArgs[1] = name;
             passArgs[2] = token;
-            MyShips.main(passArgs);
+            passArgs[3] = shipID;
             frame.dispose();
+            TradePage.main(passArgs);
         }
 
-        int length = shipArray.size();
+        String location = (String) ship.get("location");
+        JSONObject marketPlace = console.viewMarketPlace(token, location);
+        JSONObject locationObject = (JSONObject) marketPlace.get("location");
+        JSONArray places = (JSONArray) locationObject.get("marketplace");
 
+        int length = places.size();
 
-        String[][] shipData = new String[length][9];
+        String[][] shipData = new String[length][4];
 
-        Iterator<JSONObject> iterator = (Iterator<JSONObject>) shipArray.iterator();
+        Iterator<JSONObject> iterator = (Iterator<JSONObject>) places.iterator();
         int counter = 0;
 
-        // Get every ship
+        // Get every place
         while (iterator.hasNext()) {
-            JSONObject eachShip = (JSONObject) iterator.next();
+            JSONObject eachMarket = (JSONObject) iterator.next();
 
-            shipData[counter][0] = (String) eachShip.get("id");
-            shipData[counter][1] = (String) eachShip.get("class");
-            shipData[counter][2] = (String) eachShip.get("location");
-            shipData[counter][3] = String.format("(%s,%s)",(Long)eachShip.get("x")+"", (Long)eachShip.get("y")+"");
-            shipData[counter][4] = (Long) eachShip.get("speed") + "";
-            shipData[counter][5] = String.format("%s/%s",(Long)eachShip.get("spaceAvailable")+"", (Long)eachShip.get("maxCargo")+"");
-            shipData[counter][6] = (String) eachShip.get("manufacturer");
-            shipData[counter][7] = (Long) eachShip.get("plating") + "";
-            shipData[counter][8] = (Long) eachShip.get("weapons") + "";
+            shipData[counter][0] = (String) eachMarket.get("symbol");
+            shipData[counter][1] = (Long) eachMarket.get("pricePerUnit") + "";
+            shipData[counter][2] = (Long) eachMarket.get("volumePerUnit") + "";
+            shipData[counter][3] = (Long) eachMarket.get("quantityAvailable") + "";
             counter ++;
         }
 
-        String[] columnName = {"ShipId", "class", "loaction", "coordinate", "speed", "cargo remain", "manufacturer", "plating", "weapons"};
+        String[] columnName = {"symbol", "price/Unit", "volume/Unit", "abailable quantity"};
 
         JTable itemsTable = new JTable(shipData, columnName);
         JScrollPane items = new JScrollPane(itemsTable);
 
-        JLabel nameLabel = new JLabel("Ship ID:");
+        JLabel nameLabel = new JLabel("Item Name:");
+        JLabel quantityLabel = new JLabel("Quantity:");
 
         JTextField id = new JTextField();
+        JTextField quantity = new JTextField();
         id.setColumns(30);
 
-
-        this.check = new JButton("Check Goods");
-        this.buy = new JButton("View Available Ships");
-        this.trade = new JButton("Trade");
+        this.check = new JButton("Purchase");
+        this.sell = new JButton("Sell");
+        this.buy = new JButton("View Nearby Marketplaces");
 
         JButton back = new JButton("back");
 
@@ -131,75 +130,64 @@ public class MyShips extends JFrame {
                 passArgs[0] = type;
                 passArgs[1] = name;
                 passArgs[2] = token;
-                UserPage.main(passArgs);
+                MyShips.main(passArgs);
                 frame.dispose();
             }
         });
 
         this.buy.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String[] passArgs = new String[4];
+                JSONObject ship = console.getShip(name, token, shipID);
+
+                String[] passArgs = new String[5];
                 passArgs[0] = type;
                 passArgs[1] = name;
                 passArgs[2] = token;
-                passArgs[3] = "";
-                AvailableShips.main(passArgs);
+                passArgs[3] = shipID;
+                passArgs[4] = "";
+                NearbyMarket.main(passArgs);
+
                 frame.dispose();
+            }
+        });
+
+        this.sell.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String item = id.getText();
+                String num = quantity.getText();
+                if (item.length() == 0 || num.length() == 0){
+                    JOptionPane.showMessageDialog(TradePage.this, "Missing Arguments");
+                    return;
+                }
+
+                JSONObject sold = console.sell(name, token, shipID, item, num);
+                if (sold == null){
+                    JOptionPane.showMessageDialog(TradePage.this, "Failed to sell");
+                    return;
+                }
+                JOptionPane.showMessageDialog(TradePage.this, "Sold Successfully");
             }
         });
 
         this.check.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String ship_id = id.getText();
-                if (ship_id.length() == 0){
-                    JOptionPane.showMessageDialog(MyShips.this, "Missing Ship ID");
+                String item = id.getText();
+                String num = quantity.getText();
+                if (item.length() == 0 || num.length() == 0){
+                    JOptionPane.showMessageDialog(TradePage.this, "Missing Arguments");
                     return;
                 }
 
-                JSONObject ship = (JSONObject) console.getGood(name, token, ship_id).get("ship");
-                JSONArray cargo = (JSONArray) ship.get("cargo");
-                int length = cargo.size();
-                if (length == 0){
-                    JOptionPane.showMessageDialog(MyShips.this, "No Good In Cargo");
+                JSONObject ship = console.buyFuel(name, token, shipID, item, num);
+                if (ship == null){
+                    JOptionPane.showMessageDialog(TradePage.this, "Purchase Failed");
                     return;
                 }
-                String[][] goodData = new String[length][3];
-                Iterator<JSONObject> iterator = (Iterator<JSONObject>) cargo.iterator();
-                int counter = 0;
-                String message = "good : quantity : total volume\n";
-                // Get every ship
-                while (iterator.hasNext()) {
-                    JSONObject eachGood = (JSONObject) iterator.next();
-                    message += (String) eachGood.get("good") + " : " + (Long) eachGood.get("quantity") + " : " + (Long) eachGood.get("totalVolume") + "\n";
-                    counter ++;
-                }
-                JOptionPane.showMessageDialog(MyShips.this, message);
+                JOptionPane.showMessageDialog(TradePage.this, "Purchase Completed");
             }
         });
 
-        this.trade.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String ship_id = id.getText();
-                if (ship_id.length() == 0){
-                    JOptionPane.showMessageDialog(MyShips.this, "Missing Ship ID");
-                    return;
-                }
-                JSONObject theShip = console.getShip(name, token, ship_id);
-                if (theShip == null){
-                    JOptionPane.showMessageDialog(MyShips.this, "INVALID Ship ID");
-                    return;
-                }
-
-                String[] passArgs = new String[4];
-                passArgs[0] = type;
-                passArgs[1] = name;
-                passArgs[2] = token;
-                passArgs[3] = ship_id;
-                TradePage.main(passArgs);
-                frame.dispose();
-            }
-        });
         GroupLayout layout = new GroupLayout(contentPane);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -214,11 +202,11 @@ public class MyShips extends JFrame {
                                         .addGap(100)
                                         .addComponent(nameLabel)
                                         .addComponent(id, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(quantityLabel)
+                                        .addComponent(quantity, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(check)
-                                        .addGap(60)
-                                        .addComponent(buy)
-                                        .addComponent(trade)
-                                )
+                                        .addComponent(sell)
+                                        .addComponent(buy))
                                 .addContainerGap(111, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -233,10 +221,13 @@ public class MyShips extends JFrame {
                                         .addComponent(nameLabel)
                                         .addComponent(id, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
+                                        .addComponent(quantityLabel)
+                                        .addComponent(quantity, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup())
                                         .addComponent(check)
+                                        .addComponent(sell)
                                         .addComponent(buy)
-                                        .addComponent(trade)
                                 )
                                 .addContainerGap(51, Short.MAX_VALUE))
         );
