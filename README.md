@@ -73,12 +73,33 @@ There are 19 operations designed in the game:
   > User can retrieve data about ships that is available for purchasing by clicking on the "Ships" button on the main page, and then clicking on the "View Available Ships" button, which will redirect to the .
   
 * The user can purchase a ship
+
+  > User can purchase a ship by entering the Location and Type of the ship, and then clicking on the "Buy" button. If any of the argument is not valid or missing, a message will be received.
+
 * The user can list their ships and their details
+
+  > All the data of ships that are owned by the user are demonstrated on the "Your Ships" page. To retrieve the Good information about a certain ship, user have to enter the ship id and then click on the "Check Goods" button. Once the input ship Id is valid, then all the good in the cargo will be demonstrated on the "Cargo" page.
+
 * The user can purchase ship fuel
+
+  > User will first need to enter the "Trade" page by entering a "ship Id" and then clicking on the "Trade" button. After that, a purchase could be made by entering "FUEL" as the Item name, as well as the Quantity to purchase. A message indicating whether the trade is successful would then be received.
+
 * The user can view the marketplace details for a given location
+
+  > Once the user enter the "Trade" page, all the market places data will be listed.
+
 * The user can purchase goods from the marketplace
+
+  > User will first need to enter the "Trade" page by entering a "ship Id" and then clicking on the "Trade" button. After that, a purchase could be made by entering an Item name, as well as the Quantity to purchase. A message indicating whether the trade is successful would then be received.
+
 * The user can list nearby locations and their details
+
+  > User could have nearby locations information listed, once he or she enter the "Nearby Market Place" page by clicking on the "View Nearby Marketplaces".
+
 * The user can create a flight plan and journey to a nearby location
+
+  > 
+
 * The user can view their current flight plan (this does not need to automatically refresh, manual is ok)
 * The user can sell goods to the marketplace
 * These features should be available ‘half-way’ – that is, if a user closes the application and re-opens it, they should be able to pick up where they left off. This must be based on the server state, not any locally saved data.
