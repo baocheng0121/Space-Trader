@@ -36,39 +36,42 @@ There are 19 operations designed in the game:
 
 * The user can see whether the server is currently active
 
-  After the credentials are verified, there will be an "active" button on the left top cornor of the main page. Click on the "active" button, you will receive a message that indicates the server status.
+  > After the credentials are verified, there will be an "active" button on the left top cornor of the main page. Click on the "active" button, you will receive a message that indicates the server status.
   
-  "spacetraders is currently online and available to play" indiates that the system is alive.
+  > "spacetraders is currently online and available to play" indiates that the system is alive.
   
 * A new user can obtain and store credentials (these can just be stored in RAM, no need for saving to disk)
 
-  New user can enter their username in the first GUI page, and the servor would generate a token for it, user should take it down. After the token is generated, the game will redirect to the main page, where the user would be able to check his or her initial user status. If a message saying "User exists! ...", then it indicates that the username has been created before, and, sadly, you will have to pick another one.
+  > New user can enter their username in the first GUI page, and the servor would generate a token for it, user should take it down. After the token is generated, the game will redirect to the main page, where the user would be able to check his or her initial user status. If a message saying "User exists! ...", then it indicates that the username has been created before, and, sadly, you will have to pick another one.
 
 * An existing user can enter and store their existing credentials
 
-  User can enter their username in the first GUI page, and the servor would determine if he or she is an existing user, if true, then it will redirect to the token entering window, where the user is required to enter the token. If the token is verified, then the user will be redirected to the main page.
+  > User can enter their username in the first GUI page, and the servor would determine if he or she is an existing user, if true, then it will redirect to the token entering window, where the user is required to enter the token. If the token is verified, then the user will be redirected to the main page.
 
 * The user can see their info
 
-  User can see their username and credits data on the main page. Ships data can be retrieved by clicking on the "ships" button, and the loans data can be retrieved by clicking on the "loans" button.
+  > User can see their username and credits data on the main page. Ships data can be retrieved by clicking on the "ships" button, and the loans data can be retrieved by clicking on the "loans" button.
 
 * The user can list available loans and their details
 
-  User can retrieve data about loans that are available by clicking on the "Available Loans" button.
+  > User can retrieve data about loans that are available by clicking on the "Available Loans" button.
 
 * The user can obtain a loan
 
-  User can request a loan by entering the Loan Type and then clicking on the "Request New Loan" button on the "Available Loans" page. A message could be received to indicating whether the request is successful.
+  > User can request a loan by entering the Loan Type and then clicking on the "Request New Loan" button on the "Available Loans" page. A message could be received to indicating whether the request is successful.
 
 * The user can list active loans
 
-  All the active loans data will be listed on the "Your Loans" page.
+  > All the active loans data will be listed on the "Your Loans" page.
 
 * The user can pay off a loan
 
-  User can pay off a loan by entering the Loan ID and then clicking on the "Pay Off A Loan" button on the "Your Loans" page.
+  > User can pay off a loan by entering the Loan ID and then clicking on the "Pay Off A Loan" button on the "Your Loans" page.
 
 * The user can list available ships and their details
+
+  > User can retrieve data about ships that is available for purchasing by clicking on the "Ships" button on the main page, and then clicking on the "View Available Ships" button, which will redirect to the .
+  
 * The user can purchase a ship
 * The user can list their ships and their details
 * The user can purchase ship fuel
