@@ -5,6 +5,7 @@
 ## Table of contents
 * [Setup](#setup)
 * [Operations](#operations)
+* [Inspiration](#inspiration)
 * [Contact](#contact)
 
 ## Setup
@@ -98,11 +99,23 @@ There are 19 operations designed in the game:
 
 * The user can create a flight plan and journey to a nearby location
 
-  > 
+  > When user is visiting the ser could create a flight plan to the a nearby location by entering the "destination" and then clicking on the "Submit Flight Plan" button. These operations should be taken place on the "Nearby Market Place" page, which could be visited from "Market Place" page by clicking on the "View Nearby MarketPlaces" button.
 
 * The user can view their current flight plan (this does not need to automatically refresh, manual is ok)
+
+  > On the "Nearby Market Places" page, User can view a current flight plan by entering the Flight plan and clicking on the "Check Flight Plan" button. If the flight plan ID does not exists, a message will be sent to notify the user.
+
 * The user can sell goods to the marketplace
+
+  > On the "Market Place" page, user can sell their goods by entering the Item name and the Quantity, and then clicking on the "Sell" button. If the trade is not successful, a message will be sent to notify the user.
+
 * These features should be available ‘half-way’ – that is, if a user closes the application and re-opens it, they should be able to pick up where they left off. This must be based on the server state, not any locally saved data.
+
+
+## Inspiration
+
+The major idea of the java.swing scaffold code is from University of Sydney-SOFT2412-the vending machine project, which is carried out by bwan3675 and his 4 other teammates, which could be reviewed via the link 
+> https://github.sydney.edu.au/SOFT2412-2020S2/T18A_Group1_Asm2.git
 
 ## Contact
 Created by bwan3675@uni.sydney.edu - feel free to contact me!
